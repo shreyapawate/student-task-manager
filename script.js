@@ -21,13 +21,21 @@ function addTask() {
     deleteButton.className = "delete-btn";
 
     deleteButton.onclick = function () {
-        li.remove();
-    };
+    li.remove();
+    updateTaskCount();
+};
 
     li.appendChild(span);
     li.appendChild(deleteButton);
 
     document.getElementById("taskList").appendChild(li);
+    updateTaskCount();
 
     taskInput.value = "";
+}
+
+function updateTaskCount() {
+    const count = document.getElementById("taskList").children.length;
+    document.getElementById("taskCount").textContent =
+        "Total Tasks: " + count;
 }
